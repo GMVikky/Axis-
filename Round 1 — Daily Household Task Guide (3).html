@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Round 1 — Daily Household Task Guide</title>
+<style>
+:root{--bg:#fafafa;--card:#fff;--tx:#1a1a1a;--mu:#6b7280;--bd:#e5e7eb;--ac:#2563eb;--ok:#16a34a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111;--card:#1b1b1b;--tx:#eee;--mu:#9ca3af;--bd:#333;--ac:#60a5fa;--ok:#4ade80}}
+:root[data-theme="dark"]{--bg:#111;--card:#1b1b1b;--tx:#eee;--mu:#9ca3af;--bd:#333;--ac:#60a5fa;--ok:#4ade80}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:17px;margin:0;letter-spacing:.3px}.sub{color:var(--mu);font-size:13px;margin:2px 0 12px}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+.tabs button{flex:none;border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:8px 12px;border-radius:8px;font:inherit;font-size:14px;cursor:pointer}
+.tabs button.on{background:var(--ac);border-color:var(--ac);color:#fff}
+.sum{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:12px;margin:10px 0}
+.sum b{font-size:16px}.row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px;color:var(--mu);font-size:13px;margin-top:4px}
+.bar{height:8px;background:var(--bd);border-radius:4px;margin-top:8px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ok);width:0;transition:width .2s}
+input[type=search]{width:100%;padding:9px 10px;border:1px solid var(--bd);border-radius:8px;background:var(--card);color:var(--tx);font:inherit;margin-bottom:8px}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.6px;color:var(--mu);margin:18px 0 8px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:12px;margin-bottom:10px}
+.card.done{opacity:.6}.top{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--mu);font-weight:600}
+.badge{border:1px solid var(--bd);border-radius:10px;padding:1px 8px;font-weight:500}
+.card h3{font-size:16px;margin:2px 0 6px}.meta{font-size:13px;margin:2px 0}.meta span{color:var(--mu)}
+.f{margin-top:8px}.f b{display:block;font-size:12px;color:var(--mu);text-transform:uppercase;letter-spacing:.4px}
+label.chk{display:flex;align-items:center;gap:8px;margin-top:12px;padding-top:10px;border-top:1px solid var(--bd);cursor:pointer}
+label.chk input{width:20px;height:20px}.rot{width:100%;margin:6px 0 2px;padding:10px;border:1px solid var(--ac);background:transparent;color:var(--ac);border-radius:8px;font:inherit;font-weight:600;cursor:pointer}.hint{color:var(--mu);font-size:12px;margin:0 0 6px}
+details{margin:14px 0}summary{cursor:pointer;font-weight:600;padding:10px 12px;background:var(--card);border:1px solid var(--bd);border-radius:10px;margin-bottom:10px}
+.none{color:var(--mu);text-align:center;padding:20px}
+
+:root{--bg2:#f4f5f7}@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg2:#262626}}:root[data-theme="dark"]{--bg2:#262626}
+body{font-size:16px;line-height:1.55}main{max-width:980px;padding:0 16px 24px}
+.hd{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);margin:0 -16px;padding:14px 16px 8px;border-bottom:1px solid var(--bd)}
+h1{font-size:22px}.sub{font-size:14px;margin-bottom:10px}.tabs button{font-size:15px;padding:10px 16px;border-radius:10px;font-weight:600}
+.hint{font-size:13px;margin:12px 0 0}.sum{padding:18px;border-radius:14px;margin-top:14px}.sum b{font-size:20px}
+.story{margin-top:12px;font-size:15px}.chain{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.chain span{font-size:13px;border:1px solid var(--bd);border-radius:16px;padding:3px 11px;background:var(--bg2)}.chain i{font-style:normal;font-weight:700;color:var(--ac);margin-right:6px}
+.card{border-left:6px solid var(--c);border-radius:14px;padding:16px 18px;margin-bottom:14px}.card .top{font-size:13px}.no{letter-spacing:.5px}.step{color:var(--c)}
+.card h3{font-size:20px;margin:6px 0 8px}.tags{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px}.tag{background:var(--c);color:#fff;border-radius:6px;padding:2px 9px;font-size:12px;font-weight:600}.seg{font-size:14px;color:var(--mu)}
+.flow{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:var(--mu);padding:7px 0;border-top:1px dashed var(--bd);border-bottom:1px dashed var(--bd);margin:8px 0 12px}
+.grid{display:grid;grid-template-columns:1fr;gap:10px}.grid .f{margin:0;background:var(--bg2);border-radius:10px;padding:11px 13px}.grid .f b{margin-bottom:3px;color:var(--c)}.grid .arr{border-left:3px solid var(--c)}.grid .wide{grid-column:1/-1}
+@media(min-width:720px){.grid{grid-template-columns:1fr 1fr}}
+h2{font-size:14px;margin:26px 0 12px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--bd);border-radius:10px;overflow:hidden}th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--bd);font-size:14px;vertical-align:top}th{background:var(--bg2);font-size:12px;text-transform:uppercase;letter-spacing:.4px;color:var(--mu)}
+</style></head><body><main>
+<header class="hd"><h1>ROUND 1 — DAILY HOUSEHOLD TASK GUIDE</h1>
+<div class="sub">Continuous household workflows • 2-hour base queue • Emergency tasks available</div>
+<div class="tabs" id="tabs"></div></header>
+<p class="hint">Stove/oven cooking: Adarsh and Vivek only. Dough, sorting, kitchen cleaning, dishwashing and vegetable prep are shared with everyone. Assignments are fixed.</p>
+
+<div id="sum" class="sum"></div>
+<input type="search" id="q" placeholder="Search tasks, category or segment…">
+<div id="list"></div>
+<footer class="hint" style="margin-top:24px">Guide v1.0 • Assignments never change automatically</footer></main>
+<script>
+const S={
+sortdry:["Food & Meal Tasks","Sort or pick through dry food ingredients by hand."],
+wash:["Food & Meal Tasks","Wash or rinse food ingredients."],
+cut:["Food & Meal Tasks","Cut, chop, or slice food ingredients."],
+simple:["Food & Meal Tasks","Prepare a simple food or drink."],
+cook:["Food & Meal Tasks","Cook or heat food using a safe household appliance."],
+knead:["Food & Meal Tasks","Knead, roll, or shape dough."],
+store:["Food & Meal Tasks","Store prepared food, leftovers, or bulk ingredients."],
+peel:["Food & Meal Tasks","Peel produce or ingredients."],
+serve:["Food & Meal Tasks","Serve or distribute food and drink."],
+clear:["Food & Meal Tasks","Clear used items after a meal."],
+portion:["Food & Meal Tasks","Transfer, pour, or portion food and ingredients."],
+cables:["Organization & Storage","Organize cables, chargers, or other flexible items."],
+drawer:["Organization & Storage","Reset a drawer, shelf, cabinet, or closet section."],
+box:["Organization & Storage","Load, unload, pack, or unpack a bag, box, bin, luggage, or storage container."],
+clutter:["Organization & Storage","Tidy and put away household clutter."],
+consol:["Organization & Storage","Consolidate partially used supplies."],
+docs:["Organization & Storage","Organize papers, mail, or documents."],
+retrieve:["Organization & Storage","Put away or retrieve stored household items."],
+restock:["Organization & Storage","Restock shelves, bins, holders, dispensers, or device consumables."],
+handwash:["Laundry & Textiles","Hand-wash garments or textiles."],
+fold:["Laundry & Textiles","Fold and organize clothing or linens."],
+bed:["Laundry & Textiles","Make or reset a bed."],
+sortlaundry:["Laundry & Textiles","Sort laundry or household textiles."],
+floor:["Cleaning & Waste","Clean a floor area."],
+surface:["Cleaning & Waste","Clean and reset a household surface."],
+tidyroom:["Cleaning & Waste","Clean and tidy a room or area."],
+waste:["Cleaning & Waste","Sort waste, recycling, or compost."],
+dishes:["Dishwashing","Wash, rinse, or dry tableware by hand."],
+load:["Dishwashing","Load dishes for washing."],
+unload:["Dishwashing","Unload and put away clean dishes."],
+rearr:["Setup & Arrangement","Rearrange lightweight furniture or room items."],
+appl:["Cleaning & Waste","Clean and reset a household object or appliance exterior."],
+tools:["Cleaning & Waste","Prepare, use, and put away cleaning tools."],
+bin:["Cleaning & Waste","Empty a bin and replace its liner."],
+iron:["Laundry & Textiles","Treat, iron, steam, or otherwise care for clothing and linens."],
+sortorg:["Organization & Storage","Sort and organize household items by an instructed rule."],
+labelbox:["Organization & Storage","Label and arrange storage containers."],
+curt:["Household Controls & Fixtures","Tie back or secure window coverings."],
+dress:["Food & Meal Tasks","Clean and dress raw meat, fish, or seafood."],
+grind:["Food & Meal Tasks","Grind, grate, mash, or pound food ingredients."],
+skewer:["Food & Meal Tasks","Skewer or thread food onto sticks."],
+craft:["Crafts & Handiwork","Craft or assemble decorative items."]};
+// [no,title,min,seg,situation,initial,movement,final]
+const T={
+"Om Prakash":{story:"Household reset flow: clear room clutter → sort papers → organize cables → reset the drawer → consolidate supplies → repack the storage box → sort pantry seeds → retrieve and restore storage.",base:[
+[33,"Household Clutter Reset",15,"clutter","A common room has accumulated books, chargers, clothing and miscellaneous items.","Identify items that are out of place.","Collect, group and return each item to its normal storage location.","Leave the room visibly organized."],
+[35,"Household Document Sorting",15,"docs","A table has accumulated bills, letters, receipts and other papers.","Collect all papers into one working area.","Sort them by type or purpose.","Place each group into the appropriate folder or storage location."],
+[30,"Mixed Cable & Charger Organization",15,"cables","A drawer contains mixed chargers, USB cables and adapters.","Empty the drawer onto a table.","Separate cables by type and length, untangle them, pair chargers with suitable cables and arrange neatly.","Put the organized items back into the drawer."],
+[31,"Household Drawer Reset",15,"drawer","A frequently used drawer has become disorganized.","Remove everything from the drawer.","Group similar items, discard obvious unwanted items if applicable, wipe the empty drawer and reorganize the contents.","Return everything in a usable arrangement."],
+[34,"Partially Used Supply Consolidation",15,"consol","Several partially used packets or supplies are occupying storage space.","Collect compatible partially used supplies.","Combine suitable items into organized containers where appropriate and remove empty packaging.","Arrange the consolidated supplies neatly."],
+[32,"Storage Box Reorganization",15,"box","A storage box contains mixed household items.","Empty the box.","Separate the contents, group similar items and reorganize them into the box.","Pack the box neatly and return it to storage."],
+[29,"Mixed Seeds Sorting & Storage",15,"sortdry","A large container holds mixed sunflower, pumpkin, sesame and flax seeds.","Bring the seeds, tray and storage containers to a clean table.","Spread seeds on the tray, separate types, remove husks, stones or damaged pieces, and collect each type in its own container.","Transfer sorted seeds into labeled containers and clear the tray."],
+[36,"Storage Retrieval & Reset",15,"retrieve","Several household items are needed from a storage area.","Identify and retrieve the requested items.","Search through the storage area while keeping the remaining items organized.","Return unused items and restore the storage area."]]},
+"Vasanth":{story:"Kitchen prep flow (no stove cooking): sort pulses and dry ingredients → wash → peel → cut → simple breakfast → store prepared items → reset the work area.",base:[
+[37,"Mixed Pulses Sorting",15,"sortdry","Mixed pulses must be cleaned before cooking today's meals.","Bring pulses, a tray and bowls to the kitchen counter.","Spread pulses in small portions, pick out stones, husks and damaged grains, and collect clean pulses in a bowl.","Store clean pulses ready for cooking; clear the tray."],
+[41,"Dry Ingredient Sorting",15,"sortdry","Dry ingredients (rice, grains, spices) need checking before storage.","Bring the ingredients and a tray to the counter.","Spread in small lots, pick out foreign particles and damaged pieces.","Collect each ingredient in its container."],
+[38,"Vegetable Washing Batch",15,"wash","A bag of fresh vegetables arrived and must be cleaned for prep.","Bring vegetables, a basin and a colander to the sink.","Rinse vegetables in batches, rub off dirt, drain them in the colander.","Leave drained vegetables on a clean tray beside the cutting board."],
+[42,"Fruit & Vegetable Peeling Batch",15,"peel","Peeled produce is needed for the next meal and snacks.","Bring produce, peeler, bowl and scrap bin.","Peel in batches, dropping peels into the scrap bin and peeled items into a clean bowl.","Move peeled produce to a clean tray; clear peelings."],
+[39,"Vegetable Cutting Batch",15,"cut","Washed vegetables are needed chopped for the day's meals.","Set the board, knife and containers on the counter.","Cut vegetables in groups (onion, tomato, carrot, beans), collecting pieces into separate containers.","Cover cut vegetables and clear scraps from the board."],
+[40,"Simple Breakfast Preparation",15,"simple","The kitchen needs a simple breakfast prepared with the ingredients on hand.","Collect breakfast ingredients and utensils.","Prepare the breakfast item in the planned quantity, arranging items as they finish.","Keep the breakfast ready to serve; tidy used utensils."],
+[43,"Prepared Ingredient Storage",15,"store","Prepped vegetables, pulses and fruit must be stored properly.","Gather prepared items and storage containers.","Portion each prepared item into a container, close it and place it in the fridge or shelf.","Arrange stored containers neatly and wipe the counter edge."],
+[44,"Kitchen Work Area Reset",15,"tidyroom","Prep is finished and the kitchen needs resetting.","Collect leftover tools, bowls and scraps.","Clear the counter, wipe the work area, sort tools and return items to their places.","Leave the kitchen clean and ready for the next worker."]]},
+"Adarsh":{story:"Today, first 2 hours: mix the chapati dough so it rests → clean and cut vegetables → make rice → roll and cook chapatis → then clean up: dishwashing → counter top → appliances → floor → arrange the kitchen.",base:[
+[101,"Chapati Dough Mixing",10,"knead","Chapati dough is needed for today's meal and must rest before rolling.","Bring atta, water, salt, oil and a large bowl.","Mix and knead into a smooth, soft dough, then cover it.","Leave the dough covered to rest and clean the bowl area.","2 cups of atta with warm water and 1 tsp oil.","Rest 45+ min before rolling; carry on with the next tasks."],
+[102,"Vegetable Cleaning Batch",10,"wash","Vegetables are needed clean for today's cooking.","Bring vegetables, a basin and a colander to the sink.","Rinse in batches, rub off dirt and drain.","Leave the washed vegetables on a clean tray beside the cutting board.","Tomatoes, onions, potatoes, beans and carrots.",""],
+[103,"Vegetable Cutting Batch",15,"cut","Cleaned vegetables are ready to be cut.","Set the board, a knife and separate containers on the counter.","Cut in groups, collecting each cut into its own container.","Cover the cut vegetables and clear scraps.","Onion slices, diced tomato, carrot rounds and bean pieces.",""],
+[104,"Rice Making",20,"cook","Rice is the base of today's meal.","Bring rice, water, a bowl and a cooker or pot.","Rinse the rice, measure the water, cook until done and rest.","Fluff the rice and keep it covered.","2 cups of rice for 4 people.","Soak the rinsed rice 20 min if time allows."],
+[105,"Chapati Rolling & Cooking Batch",20,"knead","The rested dough is ready for chapatis.","Bring the dough, board, rolling pin and tawa.","Portion, roll and cook chapatis in a batch.","Stack the chapatis in a covered container and clean the board.","10 chapatis from 2 cups of atta.","Dough has rested 45+ min; knead 1–2 min if it feels tight."],
+[106,"Dishwashing — Cooking Utensils",10,"dishes","Used utensils and tableware from cooking are piled up.","Bring the utensils to the sink with soap, a scrubber and a rack.","Scrub, rinse and dry each item.","Leave the clean items on the rack and wipe the sink.","Pots, pans, bowls and ladles.",""],
+[107,"Cooking Counter Top Cleaning",10,"surface","The counter top has oil, spills and crumbs after cooking.","Clear the counter; bring a cloth and degreasing spray.","Spray, wipe, scrub sticky spots and dry.","Return the items neatly.","Counter, stove side and backsplash.",""],
+[108,"Kitchen Appliance Cleaning",10,"appl","Kitchen appliances have oil and splashes after cooking.","Switch off and unplug; bring cloths and mild soapy water.","Wipe the exterior of the stove, cooker, mixer and microwave, then dry them.","Place the appliances back and reconnect them.","Stove exterior, cooker, mixer jar and microwave door.",""],
+[109,"Kitchen Floor Cleaning",10,"floor","The kitchen floor has spills and crumbs.","Bring a broom, dustpan and mop.","Sweep from the corners to the centre, then mop in sections.","Put the tools away and leave the floor drying.","Around the stove, under the table and by the sink.",""],
+[110,"Kitchen Item Arrangement",5,"sortorg","Kitchen items are out of place after cooking.","Collect items from the counter and open shelves.","Group items by rule (tools, jars, spices, containers) and arrange them.","Leave the kitchen tidy and ready for the next meal.","Spice jars, steel containers and cooking tools.",""]],
+alt:[
+[45,"Hand-Wash Clothing Batch",20,"handwash","A basket of clothes needs to be washed before the rest of the bedroom reset.","Bring the clothes, bucket, water and washing supplies together.","Sort the batch, soak where needed, hand-wash the garments, rinse them and prepare them for drying.","Place washed clothes in the drying area and leave the washing area organized."],
+[46,"Clothing Folding Batch",15,"fold","A basket of dry, clean clothes is waiting.","Bring the basket to a clean bed or table.","Fold shirts, trousers and linens in groups and stack by type.","Place stacks into the wardrobe or shelf."],
+[47,"Bed Reset",15,"bed","The bed needs fresh, neat bedding before the day moves on.","Remove used bedding and bring clean sheets and pillow covers.","Spread the sheet, fit covers, arrange blanket and pillows.","Leave the bed neatly made; take used linens to the laundry area."],
+[48,"Vegetable Rice Cooking",25,"cook","Lunch needs a one-pot vegetable rice.","Bring washed rice, cut vegetables, spices, oil and cooker/pan.","Heat oil, add spices and vegetables, add rice and water, cook until done.","Rest the rice, fluff it and keep it covered."],
+[49,"Egg Curry Cooking",25,"cook","The meal needs an egg curry to go with rice and chapati.","Set out boiled eggs, onions, tomatoes, spices and a pan.","Cook the masala base, add eggs and water, simmer until the gravy thickens.","Transfer to a serving container; clean the stove top."],
+[50,"Chapati Batch",20,"knead","Chapatis are needed for the meal.","Bring flour, water, board, rolling pin and tawa.","Knead dough, rest it, portion, roll and cook chapatis in a batch.","Stack chapatis in a covered container; clean the board."]],
+ext:[
+[85,"Grocery Unpack & Sort",15,"box","Fresh groceries have arrived and need sorting before cooking.","Bring the grocery bags to the counter.","Unpack, separate vegetables, rice, pulses, spices and fridge items, and put each group in its place.","Keep today's cooking ingredients aside on the counter.","Vegetables, rice, dal, spices, oil and eggs.",""],
+[69,"Rice Preparation",15,"wash","Rice for the meal must be washed first.","Bring rice, a bowl and a sieve to the sink.","Rinse the rice several times until the water runs clearer, then drain.","Leave rice in the cooking pot.","2 cups of rice rinsed 3 times.","Soak rinsed rice 20–30 min while you do Task 78."],
+[78,"Potato Cutting & Soaking for Fries",15,"cut","Fries are planned for today and potatoes must be prepared.","Bring washed potatoes, a board, a knife and a bowl of cold water.","Cut potatoes into even sticks and drop them into cold water.","Cover the bowl and clear the board.","1 kg of potatoes cut into 1 cm sticks.","Soak 20–30 min to remove starch; do Tasks 51–52 meanwhile."],
+[51,"Dal Preparation & Cooking",25,"cook","Dal is the main protein for today's meal.","Bring washed dal, water, turmeric, salt and a cooker.","Pressure-cook the dal, prepare the tempering and combine.","Keep the dal covered and warm.","Toor dal with a cumin-garlic tempering.","Soak dal 20 min before cooking if time allows."],
+[52,"Vegetable Curry",25,"cook","A vegetable curry is needed with dal and rice.","Set out cut vegetables, masala, oil and a pan.","Sauté, add vegetables and spices, cover and cook until soft.","Transfer into a serving container.","Potato-cauliflower or mixed vegetable curry.",""],
+[79,"French Fries Frying",25,"cook","Fries are the snack for today.","Drain and pat-dry soaked potato sticks; heat oil in a pan.","Fry in small batches until golden, drain on paper and season.","Strain and cool the oil and clean the stove area.","1 kg of potatoes fried in 3–4 batches with salt and chilli powder.","Dry the sticks completely before frying. Use only after soaking."],
+[70,"Breakfast Preparation",20,"simple","Tomorrow's breakfast is being prepared in advance.","Collect ingredients and utensils.","Prepare the breakfast item in the planned quantity.","Cover and store, ready for serving.","Poha, upma or idli (if batter is ready).",""],
+[71,"Meal Portioning",15,"portion","Cooked food must be divided into portions.","Bring containers, ladles and plates.","Portion rice, dal, curry, fries and chapatis into containers.","Close and arrange the portions.","4 boxes, each with rice, dal, curry and 2 chapatis.",""],
+[72,"Storing Prepared Food",20,"store","Finished food needs safe storage.","Cool the food and gather containers.","Transfer food into airtight containers, label and place in the fridge or on the shelf.","Wipe the counter and clear empty pans.","Curry in a steel box, dal in a jar, chapatis wrapped in cloth.",""],
+[86,"Kitchen Cleanup After Cooking",15,"tidyroom","Cooking is finished and the kitchen is messy.","Collect used pans, bowls and tools.","Wipe the stove top and counter, sort used items and clear scraps.","Leave the kitchen clean and ready for the next meal.","Stove top, counter, sink area and floor edges.",""]]},
+"Shreyas":{story:"Bedroom reset flow: collect messy bedding → reset the bed → clean the floor → unpack bags → fold → iron → put away in the cupboard → repack the bag. Extended: clutter, linens, dishes and room arrangement.",base:[
+[61,"Sleepover Bedding Collection",15,"sortlaundry","The previous night 3–4 friends had a sleepover and a pillow fight. The bedroom is completely messy.","Enter the room and gather all bedding, pillow covers and fabrics.","Sort into washable linens, clothes and items to remain on the bed.","Move washable items to the washing area.","Pillow covers, bedsheet, blanket, cushion covers and socks, sorted into wash and keep piles."],
+[62,"Bed Reset",15,"bed","The bed must be made fresh after the sleepover.","Bring clean sheets, covers and pillows.","Spread the sheet, fit covers and arrange pillows and blanket.","Leave the bed neatly made.","Fitted sheet, 4 pillows, blanket and 2 cushions."],
+[63,"Bedroom Floor Cleaning",15,"floor","The floor has crumbs, dust and loose debris.","Bring a broom, dustpan and mop.","Sweep, collect debris, then mop in sections.","Return tools and leave the floor drying.","Chip crumbs, popcorn, hair and dust under the bed."],
+[64,"Unpack Travel Bags",15,"box","Overnight bags are still packed on the floor.","Bring the bags to the bed and open them.","Take out clothes, toiletries and chargers and group them by type.","Leave the empty bags flat, ready to be repacked.","Two bags: clothes, a toiletries pouch, chargers and shoes.",""],
+[65,"Clothes Folding & Organizing",15,"fold","Friends' clothes and the room's laundry are piled together.","Bring the clothes to the bed or a table.","Fold in groups and stack by type.","Place stacks in the wardrobe.","T-shirts, shorts, pyjamas and socks matched in pairs."],
+[66,"Ironing Batch",15,"iron","Folded clothes are creased and need ironing before packing.","Set up the board and iron; sort by fabric.","Iron each piece at the right heat and stack neatly.","Switch off and let the iron cool.","4 shirts, 2 trousers and 2 pillow covers.",""],
+[67,"Put Away Items in Cupboard",15,"drawer","Unpacked items need a home.","Open the cupboard and clear one shelf section.","Place clothes, toiletries and chargers in their sections, keeping daily items easy to reach.","Close the cupboard with the section tidy.","Shirts on a shelf, socks in a drawer, toiletries in a basket.",""],
+[68,"Repack Bag",15,"box","A bag is needed for tomorrow's trip.","Bring the empty bag and the ironed clothes.","Pack heavy items at the bottom, clothes folded flat on top and small items in side pockets.","Zip the bag and place it by the door.","Two shirts, trousers, a toiletries pouch and a charger.",""]],
+ext:[
+[81,"Bedroom Clutter Reset",15,"clutter","Snacks, books, chargers and clothes are scattered across the floor and bed.","Walk the room and spot items out of place.","Collect, group and return each item to its home; bin trash.","Leave floor and bed free of loose items.","Snack wrappers, comics, chargers, hair ties and scattered clothes."],
+[82,"Hand-Wash Pillowcases & Linens",15,"handwash","Pillow covers and a sheet have stains and sleepover mess.","Bring a bucket, water and washing supplies.","Soak, hand-wash, rinse and wring the linens.","Hang the linens to dry; tidy the washing area.","4 pillow covers and a sheet; mild detergent; spot-treat stains before soaking."],
+[83,"Sleepover Snack Dishes",15,"dishes","Plates, glasses and snack bowls from the night are stacked up.","Bring the dishes to the sink and set soap and sponge.","Wash, rinse and dry each item.","Leave clean dishes on the rack; wipe the sink.","6 plates, glasses, snack bowls and spoons."],
+[84,"Bedroom Room Arrangement",15,"rearr","Cushions, a small table and floor mattresses were moved for the sleepover.","Identify items that were moved.","Move lightweight furniture and room items back to their normal places.","Leave the room ready to use.","Study table moved back, floor mattresses rolled up and stored, cushions back on the sofa."]]},
+"Vivek":{story:"Today, first 2 hours: mix the dough → clean and cut vegetables → dal → tomato-onion curry → rice → chapatis → then clean up: dishwashing → counter top → appliances → floor → arrange the kitchen.",base:[
+[201,"Chapati Dough Mixing",10,"knead","Chapati dough is needed for today's meal and must rest before rolling.","Bring atta, water, salt, oil and a large bowl.","Mix and knead into a smooth, soft dough, then cover it.","Leave the dough covered to rest and clean the bowl area.","2 cups of atta with warm water and 1 tsp oil.","Rest 45+ min before rolling; carry on with the next tasks."],
+[202,"Vegetable Cleaning Batch",10,"wash","Vegetables are needed clean for today's cooking.","Bring vegetables, a basin and a colander to the sink.","Rinse in batches, rub off dirt and drain.","Leave the washed vegetables on a clean tray beside the cutting board.","Tomatoes, onions, potatoes, beans and carrots.",""],
+[203,"Vegetable Cutting Batch",10,"cut","Cleaned vegetables are ready to be cut.","Set the board, a knife and separate containers on the counter.","Cut in groups, collecting each cut into its own container.","Cover the cut vegetables and clear scraps.","Onion slices, diced tomato, carrot rounds and bean pieces.",""],
+[211,"Dal Cooking",15,"cook","Dal is the main curry for today's meal.","Bring washed dal, water, turmeric, salt and a cooker.","Pressure-cook the dal, make the tempering and combine.","Cover the dal and keep it warm.","Toor dal with a cumin-garlic tempering.","Start it before cutting finishes; soak the dal 20 min if time allows."],
+[212,"Tomato-Onion Curry",15,"cook","A simple tomato-onion curry is added to the meal.","Set out sliced onions, chopped tomatoes, oil, spices and a pan.","Sauté the onions until golden, add tomatoes and spices, and simmer until thick.","Transfer to a serving container and clean the stove top.","2 onions and 3 tomatoes with chilli, turmeric and coriander powder.",""],
+[204,"Rice Making",15,"cook","Rice is the base of today's meal.","Bring rice, water, a bowl and a cooker or pot.","Rinse the rice, measure the water, cook until done and rest.","Fluff the rice and keep it covered.","2 cups of rice for 4 people.","Soak the rinsed rice 20 min if time allows."],
+[205,"Chapati Rolling & Cooking Batch",15,"knead","The rested dough is ready for chapatis.","Bring the dough, board, rolling pin and tawa.","Portion, roll and cook chapatis in a batch.","Stack the chapatis in a covered container and clean the board.","10 chapatis from 2 cups of atta.","Dough has rested 45+ min; knead 1–2 min if it feels tight."],
+[206,"Dishwashing — Cooking Utensils",10,"dishes","Used utensils and tableware from cooking are piled up.","Bring the utensils to the sink with soap, a scrubber and a rack.","Scrub, rinse and dry each item.","Leave the clean items on the rack and wipe the sink.","Pots, pans, bowls and ladles.",""],
+[207,"Cooking Counter Top Cleaning",5,"surface","The counter top has oil, spills and crumbs after cooking.","Clear the counter; bring a cloth and degreasing spray.","Spray, wipe, scrub sticky spots and dry.","Return the items neatly.","Counter, stove side and backsplash.",""],
+[208,"Kitchen Appliance Cleaning",5,"appl","Kitchen appliances have oil and splashes after cooking.","Switch off and unplug; bring cloths and mild soapy water.","Wipe the exterior of the stove, cooker, mixer and microwave, then dry them.","Place the appliances back and reconnect them.","Stove exterior, cooker, mixer jar and microwave door.",""],
+[209,"Kitchen Floor Cleaning",5,"floor","The kitchen floor has spills and crumbs.","Bring a broom, dustpan and mop.","Sweep from the corners to the centre, then mop in sections.","Put the tools away and leave the floor drying.","Around the stove, under the table and by the sink.",""],
+[210,"Kitchen Item Arrangement",5,"sortorg","Kitchen items are out of place after cooking.","Collect items from the counter and open shelves.","Group items by rule (tools, jars, spices, containers) and arrange them.","Leave the kitchen tidy and ready for the next meal.","Spice jars, steel containers and cooking tools.",""]],
+alt:[
+[53,"Chapati Dough Preparation",15,"knead","Chapati dough is the first step of the meal sequence.","Bring flour, water, salt, oil and a bowl.","Mix and knead into a smooth dough, then rest it.","Cover the dough and clean the kneading area."],
+[54,"Vegetable & Rice Preparation",15,"cut","Vegetables and rice are needed prepared for cooking.","Set out vegetables, a board and knife.","Wash if needed and cut vegetables; measure rice nearby.","Collect everything in clean containers by the stove."],
+[55,"Dal Cooking",20,"cook","Dal is the base of the meal.","Bring washed dal, water, spices and cooker.","Pressure-cook the dal, make the tempering and combine.","Cover the dal and keep it warm."],
+[56,"Vegetable Curry Cooking",20,"cook","A vegetable curry is needed alongside dal.","Set out the prepared vegetables, masala, oil and a pan.","Sauté, add vegetables and spices, cover and cook until soft.","Transfer into a serving container."],
+[57,"Chapati Rolling & Cooking Batch",20,"knead","The rested dough is ready for chapatis.","Bring the dough, rolling pin, board and tawa.","Portion, roll and cook chapatis in a batch.","Stack in a covered container."],
+[58,"Meal Portioning & Serving",10,"serve","The meal is ready to be served.","Set plates and bring all cooked dishes.","Portion and serve rice, dal, curry and chapatis.","Leave serving dishes covered and tidy."],
+[59,"Used Meal Item Collection",10,"clear","The meal is finished and used items are at the table.","Bring a tray to the table.","Collect plates, glasses, cutlery and leftovers.","Move items to the sink and wipe the table."],
+[60,"Kitchen Floor Cleaning",10,"floor","Cooking has left spills and crumbs on the kitchen floor.","Bring a broom, dustpan and mop.","Sweep debris, then mop the floor in sections.","Put away tools and leave the floor drying."]],
+ext:[
+[87,"Grocery Unpack & Sort",15,"box","Fresh groceries have arrived and need sorting before cooking.","Bring the grocery bags to the counter.","Unpack, separate vegetables, rice, pulses, spices and fridge items, and put each group in its place.","Keep today's cooking ingredients aside on the counter.","Chicken, vegetables, rice, spices and curd.",""],
+[73,"Chicken Cleaning & Marination",20,"dress","Chicken curry is planned and the chicken needs marinating time.","Bring chicken, a bowl, curd, ginger-garlic paste, spices, salt and lemon.","Clean and cut the chicken, rinse, pat dry, mix the marinade and coat every piece.","Cover, refrigerate and wash the board and bowl.","500 g of chicken with curd, chilli, turmeric and ginger-garlic.","Marinate at least 30 min (up to 4 h in the fridge). Do Tasks 74–75 meanwhile."],
+[74,"Salad & Raita Prep",15,"cut","A side salad and raita are being added to the meal.","Set out cucumbers, tomatoes, onions, a board and a knife.","Cut vegetables and collect them into bowls.","Cover and chill the prepared items.","Cucumber, tomato and onion salad; curd with salt and roasted cumin.","Done while the chicken marinates."],
+[75,"Rice Cooking",25,"cook","A fresh batch of rice is needed.","Bring rinsed rice, water and a cooker or pot.","Cook the rice until done and rest it.","Fluff and cover the rice.","2 cups of rice for 4 people.","Soak the rinsed rice 20–30 min before cooking."],
+[76,"Chicken Curry Cooking",30,"cook","The marinated chicken is ready to be cooked.","Take the chicken out of the fridge 10 min early; set out onions, tomatoes, oil and a pan.","Cook onions and masala, add chicken, cover and simmer until tender.","Garnish and transfer to a serving container.","500 g of chicken, 2 onions and 2 tomatoes.","Start only after 30+ min of marination."],
+[77,"Second Chapati Batch",25,"knead","More chapatis are needed for the second serving.","Bring the rested dough, board, rolling pin and tawa.","Portion, roll and cook chapatis in a batch.","Stack chapatis in a covered container.","10 chapatis from 2 cups of atta.","Knead the dough at the start of the session; it needs 30+ min of rest."],
+[80,"Portion & Store Leftovers",15,"store","Leftover food must be stored safely.","Cool the food and gather containers.","Portion into containers and close them.","Place in the fridge or on the shelf and wipe the counter.","Chicken curry in a box, rice in a container, chapatis wrapped in cloth.",""],
+[88,"Kitchen Cleanup After Cooking",15,"tidyroom","Cooking is finished and the kitchen is messy.","Collect used pans, bowls and tools.","Wipe the stove top and counter, sort used items and clear scraps.","Leave the kitchen clean and ready for the next meal.","Stove top, counter, sink area and floor edges.",""]]},
+"Task Bank":{gen:[
+["G1","Window Cleaning",20,"surface","Window glass and frames are dusty and smudged.","Bring glass cleaner, cloths, a squeegee and a stool.","Dust the frame, spray and wipe the glass, squeegee dry, wipe the sill.","Put tools away and leave the window streak-free.","Two windows: glass, frame, track and sill."],
+["G2","TV Cleaning",15,"appl","The TV screen and stand have fingerprints and dust.","Switch off the TV; bring a dry microfiber cloth and screen cleaner.","Dust the frame and stand, wipe the screen gently in one direction, wipe the remote.","Leave the screen clear and the cloth stored.","Screen, bezel, stand and remote."],
+["G3","Washing Machine Cleaning",20,"appl","The washing machine exterior and detergent area are grimy.","Empty the machine; bring cloths, brush and a mild cleaner.","Wipe the exterior and lid, clean the detergent drawer and door rubber seal, dry.","Leave the door ajar and the area tidy.","Drawer, door seal, control panel and top."],
+["G4","Lamp Cleaning",15,"appl","Table and floor lamps are dusty.","Switch off and unplug each lamp; bring a dry and a slightly damp cloth.","Dust shades and bases, wipe the stems and the cords' outer surface.","Restore the lamps to place.","Two table lamps and one floor lamp."],
+["G5","Cleaning Supplies Setup & Put-Away",15,"tools","Cleaning tools are needed and must be stored properly after use.","Collect cloths, spray bottles, mop and brush from storage.","Prepare each tool, use it for the planned job, rinse and dry it.","Return all tools to the cleaning shelf.","Two cloths, spray bottle, mop and dustpan."],
+["G6","Ironing Batch",25,"iron","Clean, dry clothes are creased.","Set up the ironing board and iron; sort the clothes.","Iron in batches, using the right heat for each fabric, and hang or stack each piece.","Switch off and cool the iron and fold the board.","4 shirts, 2 trousers and 2 pillow covers."],
+["G7","Dustbin Emptying & Re-Lining",15,"bin","Household bins are full.","Bring new liners and a larger trash bag.","Lift out each liner, tie it, wipe the empty bin, fit a new liner.","Take full bags to the collection point.","Living room, bedroom and bathroom bins."],
+["G8","Curtain Arrangement",15,"curt","Curtains are hanging unevenly or need tying back.","Open the curtains and gather tiebacks.","Straighten the folds evenly and tie back or secure each curtain.","Leave the curtains uniform across the room.","Two curtains with tiebacks or hooks."],
+["G9","Storage Box Labelling",20,"labelbox","Storage boxes have no clear labels.","Gather boxes, labels and a marker.","Check each box's contents, write labels, stick them and arrange the boxes.","Place the boxes on the shelf with labels facing out.","Winter clothes, tools, documents and toys."]],
+kit:[
+["C1","Rice Preparation",15,"wash","Rice must be washed before cooking.","Bring rice, a bowl and a sieve to the sink.","Measure, rinse several times until the water runs clearer, drain.","Leave the rice ready in the cooking pot.","2 cups of rice rinsed 3 times."],
+["C2","Rice Cooking",25,"cook","Rice is needed for the meal.","Bring rinsed rice, water and a cooker or pot.","Add water, cook until done and rest.","Fluff and cover the rice.","2 cups of rice for 4 people."],
+["C3","Dal Cooking",25,"cook","Dal is needed for the meal.","Bring washed dal, water, turmeric, salt and a cooker.","Pressure-cook the dal, make the tempering and combine.","Cover the dal and keep it warm.","Toor dal with cumin-garlic tempering."],
+["C4","Chicken Cleaning & Marination",20,"dress","Chicken is needed later for cooking or frying.","Bring chicken, a bowl, curd and spices.","Clean, cut, rinse, pat dry and coat with marinade.","Cover, refrigerate and clean the board.","500 g of chicken with curd and masala.","Marinate 30 min to 4 h in the fridge."],
+["C5","Chicken Fry",30,"cook","Marinated chicken is to be fried as a starter.","Set out marinated chicken, oil and a pan.","Shallow-fry in batches until cooked and golden.","Drain on paper and clean the stove area.","Chicken 65 or pepper chicken fry.","Use only after 30+ min of marination."],
+["C6","Cake Batter Preparation",20,"simple","A simple cake is being baked.","Bring flour, sugar, eggs, butter or oil, baking powder and a bowl.","Measure, cream, mix wet and dry ingredients, then fold into a smooth batter.","Pour into a greased tin and clear the bowls.","Vanilla or chocolate cake batter.","Preheat the oven 10 min before baking."],
+["C7","Cake Baking",35,"cook","The prepared cake batter needs baking.","Preheat the oven and place the tin on the rack.","Bake, check with a toothpick, turn the tin if needed, then remove.","Cool the cake on a rack and switch off the oven.","30–35 min bake and 15 min cooling.","Do not open the oven in the first 20 min; cool before cutting."],
+["C8","Cookie Baking",30,"cook","Cookie dough is ready for baking.","Line a tray with paper and preheat the oven.","Portion the dough, bake in batches and check the colour.","Cool the cookies and store in a jar.","Butter or oats cookies, 12–15 per tray.","Chill the dough 20 min first for a better shape."],
+["C9","Masala Nuts Roasting",20,"cook","A spicy nut snack is being prepared.","Set out peanuts or cashews, spices, oil and a pan.","Dry roast the nuts, toss with oil and masala, and roast until crisp.","Cool and store in a jar.","Masala peanuts or cashews with chilli and chaat masala.","Cool 10 min before storing so the nuts stay crisp."],
+["C10","Potato Tikki Snack",25,"simple","A snack is needed for evening tea.","Bring boiled potatoes, spices, breadcrumbs and a pan.","Mash, season, shape into patties and pan-fry both sides.","Serve with chutney; wipe the pan.","6–8 aloo tikkis with green chutney.","Chill the shaped tikkis 10 min before frying."],
+["C11","Pakora Frying",25,"cook","Hot pakoras are the snack.","Prepare a gram flour batter and cut the vegetables.","Dip the vegetables, fry in batches and drain.","Strain the oil and clean the stove.","Onion, potato or spinach pakoras.","Rest the batter 10 min."],
+["C12","Dosa/Idli Batter Grinding",25,"grind","Tomorrow's dosa or idli batter must be ground.","Bring soaked rice and dal, a grinder and containers.","Grind to a smooth batter and add salt and water.","Cover in a large vessel; clean the grinder.","3 cups of rice with 1 cup of urad dal.","Soak 4–6 h before and ferment 8–12 h after."],
+["C13","Paneer Tikka Skewering",25,"skewer","A starter is being prepared.","Bring paneer, peppers, onions, skewers and the marinade.","Marinate, thread onto skewers and cook in an oven or pan.","Plate and clean the skewers.","12 skewers with paneer and vegetables.","Marinate 30 min before skewering."],
+["C14","Vegetable Biryani Cooking",35,"cook","A one-pot biryani is part of the meal.","Bring rinsed rice, vegetables, masala, curd and a heavy pot.","Layer the masala and rice, and cook covered on low heat.","Rest, fluff and serve.","Biryani for 4–5 people.","Soak the rice 30 min and rest the biryani 10 min."],
+["C15","Multi-Dish Meal Sequence",45,"cook","Several dishes are cooked in the right order for one meal.","Write the order: dough first, marinate, rice, dal, curry, then fry.","Start the long-rest items first and cook the others while they rest.","Everything finishes at the same time.","Chapati, chicken curry, rice, dal and fries.","Dough 30 min, marinade 30 min, rice soak 20 min."]]},
+"Props List":{},
+"Emergency":{emg:[
+["E1","Clean Living-Room Floor",20,"floor","A living-room floor needs cleaning.","Move light items aside and bring cleaning tools.","Sweep debris, then mop the area in sections.","Return items and tools."],
+["E2","Clean Household Surface",20,"surface","A table or counter needs cleaning.","Clear items from the surface.","Spray, wipe and dry the surface.","Restore items neatly."],
+["E3","Hand-Wash Towel Batch",20,"handwash","A batch of used towels needs washing.","Bring towels, bucket, water and soap.","Soak, wash, rinse and wring each towel.","Hang to dry."],
+["E4","Reset Bed & Bedding",20,"bed","A bed needs a full bedding reset.","Remove used bedding.","Spread a clean sheet, fit covers, arrange pillows and blanket.","Leave the bed neatly made."],
+["E5","Hand Crafting Batch",20,"craft","A set of simple decorative items is needed.","Set out materials at a worktable.","Assemble the decorative items in a batch.","Store finished pieces and clear materials."],
+["E6","Hand-Wash Tableware Batch",20,"dishes","A stack of used tableware is waiting.","Set up the sink with soap and sponge.","Wash, rinse and dry the batch.","Place on the rack and wipe the sink."],
+["E7","Load Dishes for Washing",20,"load","Used dishes are ready for a dishwasher.","Scrape and gather the dishes.","Load plates, glasses and cutlery in order.","Close the machine and tidy the counter."],
+["E8","Unload & Put Away Clean Dishes",20,"unload","Clean dishes are waiting in the rack or machine.","Open the machine or gather the rack.","Unload and put each item in its cabinet or drawer.","Leave the rack empty and the area tidy."],
+["E9","Household Supply Restock",20,"restock","Shelves and dispensers are running low.","Gather supplies to be restocked.","Refill shelves, bins and dispensers, removing empty packaging.","Arrange stock neatly."],
+["E10","Mixed Waste Sorting",20,"waste","Mixed waste has built up in one bin.","Lay out separate containers for each type.","Sort waste, recycling and compost.","Seal and place each type in its bin."]]}};
+const X={
+29:"Sunflower, pumpkin, sesame and flax kept apart; discard shells, small stones and broken seeds.",
+30:"USB-C, micro-USB and Lightning cables sorted by length; phone adapters paired; each coil tied with a band.",
+31:"Kitchen drawer: spoons, tape, scissors, batteries, rubber bands, sorted into small trays.",
+32:"Winter scarves, board games, spare bulbs and photo albums grouped by type before repacking.",
+33:"Books to the shelf, chargers to the drawer, clothes to the basket, cups to the kitchen.",
+34:"Two half-used sugar packets poured into one jar; spice sachets combined; empty wrappers removed.",
+35:"Electricity bills, receipts, letters and warranty cards filed into separate folders.",
+36:"Fetch the extension cord, torch and spare bulb from the store cupboard, then restore the shelf.",
+37:"Toor dal, moong and chana dal mixed together; remove stones, husks and discoloured grains.",
+38:"Potatoes and carrots scrubbed; tomatoes, beans and okra rinsed and drained.",
+39:"Onion slices, diced tomato, carrot rounds and bean pieces in separate bowls.",
+40:"Bread sandwich, fruit bowl or cereal with milk for 3–4 people — no stove cooking.",
+41:"Rice, sesame, jeera and mustard seeds checked for stones and foreign particles.",
+42:"Potatoes, carrots, apples or raw bananas, about 1–2 kg in total.",
+43:"Chopped onion in a box, soaked dal in a jar, cut fruit in a covered container.",
+44:"Wipe stove top, counter and sink; return knives, board and bowls to their places.",
+45:"Shirts, T-shirts, trousers and towels; whites and colours separated; 2–3 rinses.",
+46:"T-shirts folded in thirds, trousers in half, towels in thirds, bedsheet into a flat rectangle.",
+47:"Fitted sheet on the corners, pillow covers on, blanket folded at the foot of the bed.",
+48:"Rice with carrots, peas, beans and cumin, for 3–4 people.",
+49:"4–6 boiled eggs in an onion-tomato masala.",
+50:"8–10 chapatis from about 2 cups of atta.",
+51:"Toor dal with turmeric; tempering of cumin, garlic and dried chilli.",
+52:"Potato-cauliflower or mixed vegetable curry.",
+69:"2 cups of rice, rinsed 3 times until the water runs clearer.",
+70:"Poha, upma or idli (if batter is ready) for the next morning.",
+71:"4 boxes, each with rice, dal, curry and 2 chapatis.",
+72:"Curry in a steel box, dal in a jar, chapatis wrapped in a cloth.",
+61:"Pillow covers, bedsheet, blanket, cushion covers and socks, sorted into wash and keep piles.",
+62:"Snack wrappers, comics, chargers, hair ties and scattered clothes.",
+63:"4 pillow covers and a sheet; mild detergent; spot-treat stains before soaking.",
+64:"Fitted sheet, 4 pillows, blanket and 2 cushions.",
+65:"T-shirts, shorts, pyjamas and socks matched in pairs.",
+66:"Chip crumbs, popcorn, hair and dust under the bed.",
+67:"6 plates, glasses, snack bowls and spoons.",
+68:"Study table moved back, floor mattresses rolled up and stored, cushions back on the sofa.",
+53:"2 cups atta, water, a pinch of salt and 1 tsp oil.",
+54:"Onions, carrots and beans cut; 1.5 cups of rice measured.",
+55:"Toor dal in a cooker for 3 whistles, then cumin-garlic tempering.",
+56:"Mixed vegetable or potato-peas curry.",
+57:"10 chapatis rolled round and puffed on the tawa.",
+58:"4 plates, each with rice, dal, curry and 2 chapatis.",
+59:"Plates, glasses, spoons, serving bowls and leftover boxes.",
+60:"Sweep crumbs, then mop around the stove and under the table.",
+73:"Cucumber, tomato and onion salad; curd with salt and roasted cumin for raita.",
+74:"2 cups of rice for 4 people.",
+75:"Beans-carrot fry or cabbage poriyal.",
+76:"A second batch of 10 chapatis.",
+77:"Curry and dal in boxes, rice in a container, chapatis wrapped in cloth.",
+E1:"Sweep, then mop around the sofa and under the table.",
+E2:"Dining table, kitchen counter or side table.",
+E3:"4–5 bath and hand towels.",
+E4:"Fitted sheet, 2 pillow covers and a blanket.",
+E5:"Paper flowers, bead garlands, greeting cards or diya decorations.",
+E6:"Plates, bowls, glasses and cutlery from a meal.",
+E7:"Plates in slots, glasses on the top rack, cutlery in the basket.",
+E8:"Plates to the cupboard, glasses to the shelf, cutlery to the drawer.",
+E9:"Toilet paper, hand-soap refills, tissues and spare bulbs.",
+E10:"Dry waste, wet waste/compost, and paper-plastic recyclables in separate bins."};
+const SH=[
+["S1","Vegetable Cleaning Batch",20,"wash","Vegetables are needed clean for the day's cooking.","Bring vegetables, a basin and a colander to the sink.","Rinse in batches, rub off dirt and drain.","Leave the vegetables ready on a tray.","Tomatoes, beans, carrots, potatoes and leafy greens.","Wash before cutting, never after."],
+["S2","Vegetable Cutting Batch",20,"cut","Cleaned vegetables are needed cut for cooking.","Set a board, a knife and separate containers.","Cut in groups and collect each into its own container.","Cover the cut vegetables and clear scraps.","Onion slices, diced tomato, carrot rounds and bean pieces.","Cut just before cooking, or refrigerate."],
+["S3","Chapati Dough Kneading & Resting",15,"knead","Chapati dough must be ready well before rolling.","Bring atta, water, salt, oil and a bowl.","Mix and knead until smooth and soft, then cover.","Clean the bowl and board; leave the dough covered.","2 cups of atta with warm water and 1 tsp oil.","Rest 30+ min (up to 2 h); do other tasks meanwhile."],
+["S4","Dry Ingredient Sorting",15,"sortdry","Dry ingredients must be checked before storage or cooking.","Bring the ingredients, a tray and containers to a clean table.","Spread in small lots, pick out stones, husks and damaged pieces.","Collect each ingredient in its container.","Pulses, rice, seeds or whole spices.",""],
+["S5","Kitchen Counter Top Cleaning",15,"surface","The counter top has oil, spills and crumbs.","Clear the counter; bring a cloth and degreasing spray.","Spray, wipe, scrub sticky spots and dry.","Put items back neatly.","Counter, stove side and backsplash.",""],
+["S6","Kitchen Work Area Reset",15,"tidyroom","The kitchen needs resetting after use.","Collect leftover tools, bowls and scraps.","Clear the counter, wipe the area, sort tools and return items.","Leave the kitchen clean and ready for use.","Counter, sink area, bins and shelves.",""],
+["S7","Kitchen Floor Cleaning",15,"floor","The kitchen floor has spills and crumbs.","Bring a broom, dustpan and mop.","Sweep debris, then mop in sections.","Put tools away and leave the floor drying.","Under the table, around the stove and the sink.",""],
+["S8","Fridge Cleaning",25,"appl","The fridge needs a clean and tidy.","Remove food into a cool bag or tray; bring cloths and mild soap water.","Wipe shelves, drawers and door, remove expired items, dry.","Return food in an organized way.","Shelves, vegetable drawer, door racks and handle.",""],
+["S9","Utensils Hand-Wash",20,"dishes","A heap of used utensils is waiting.","Bring utensils to the sink with soap, a scrubber and a rack.","Scrub, rinse and dry each utensil.","Leave clean utensils on the rack.","Pots, pans, ladles and steel containers.",""],
+["S10","Load Dishes for Washing",15,"load","Used dishes are ready for a dishwasher.","Scrape and gather the dishes.","Load plates, glasses and cutlery in order.","Close the machine and tidy the counter.","Plates in slots, glasses on the top rack.",""],
+["S11","Unload & Put Away Dishes",15,"unload","Clean dishes are waiting in the rack or machine.","Open the machine or gather the rack.","Unload and put each item in its cabinet or drawer.","Leave the rack empty and the area tidy.","Plates to the cupboard, cutlery to the drawer.",""],
+["S12","Kitchen Item Arrangement",20,"sortorg","Kitchen shelves have mixed items in random places.","Take everything off the shelf or counter.","Group items by rule (tools, jars, spices, containers) and arrange.","Return items in groups with labels visible.","Spice jars, steel containers and cooking tools.",""],
+["S13","Fruit & Vegetable Peeling",15,"peel","Peeled produce is needed for the next meal.","Bring produce, a peeler, a bowl and a scrap bin.","Peel in batches, peelings into the bin, items into a clean bowl.","Move the peeled produce to a tray and clear peelings.","Potatoes, carrots, apples or raw bananas.",""]];
+const TM={45:"Before starting, mix and cover the chapati dough (5 min supporting step) so it rests during laundry and bed reset.",50:"The dough has rested 40+ min. If it was not mixed earlier, do that before Task 45.",53:"Cover and rest 30+ min; continue with Tasks 54–56 meanwhile.",57:"Dough has rested 60+ min; knead 1–2 min if tight."};
+const W=Object.keys(T);let cur=W[0];const done={};const COOK=["Adarsh","Vivek"];
+const L={"Om Prakash":"Organization & Storage","Vasanth":"Food Preparation","Adarsh":"Today: Cooking & Kitchen Cleaning","Shreyas":"Bedroom Reset Flow","Vivek":"Today: Cooking, Curries & Kitchen Cleaning"};
+const $=id=>document.getElementById(id);
+const mins=a=>a.reduce((s,t)=>s+t[2],0);
+const doneMin=a=>a.filter(t=>done[t[0]]).reduce((s,t)=>s+t[2],0);
+const SNK=[
+["SN1","Fruit Salad Bowl",15,"cut","A fruit snack is needed for the break.","Wash the fruits and set the board, knife and a large bowl.","Peel and cut the fruits into bite-size pieces and toss them gently in the bowl.","Cover and chill the bowl and clear the peels.","Apple, banana, orange and grapes for 4 people.","","E:Chopping board|1;E:Knife|1;E:Large bowl|1;E:Serving spoon|1;E:Small serving bowls|4;E:Waste bowl|1;I:Apples|2;I:Bananas|3;I:Oranges|2;I:Grapes|1 cup"],
+["SN2","Fruit Skewers",15,"skewer","A fun fruit snack is needed for the break.","Wash and cut the fruit into chunks; set out skewers and a tray.","Thread the fruit onto skewers, alternating colours.","Arrange the skewers on a tray and cover.","12 skewers with pineapple, grapes, melon and apple.","","E:Wooden skewers|12;E:Tray|1;E:Chopping board|1;E:Knife|1;E:Waste bowl|1;I:Pineapple chunks|1 cup;I:Grapes|1 cup;I:Melon cubes|1 cup;I:Apple chunks|1 cup"],
+["SN3","Sprouts Chaat",15,"simple","A healthy no-cook snack is needed.","Rinse the sprouts and set out the vegetables and a large bowl.","Chop the vegetables, mix with the sprouts, then season with lemon and masala.","Portion into small bowls and clear the board.","Sprouted moong with onion, tomato, cucumber and lemon.","","E:Large bowl|1;E:Chopping board|1;E:Knife|1;E:Small bowls|4;E:Spoons|4;I:Sprouted moong|2 cups;I:Onion|1;I:Tomato|1;I:Cucumber|1;I:Lemon|1;I:Chaat masala|1 tsp;I:Salt|to taste;I:Coriander leaves|1 handful"],
+["SN4","Veggie Sticks with Curd Dip",15,"cut","A light, crunchy snack with a dip is needed.","Wash the vegetables and set the board, knife and a tray.","Cut the vegetables into even sticks and arrange them around a dip bowl.","Chill and keep the tray covered.","Cucumber and carrot sticks with a salted curd dip.","Serve soon after cutting so the sticks stay crisp.","E:Chopping board|1;E:Knife|1;E:Serving tray|1;E:Dip bowl|1;E:Spoon|1;I:Cucumbers|2;I:Carrots|3;I:Curd|1 cup;I:Salt|1 pinch;I:Roasted cumin powder|1/2 tsp"],
+["SN5","Veg Sandwich Platter",15,"simple","Sandwiches are needed for the break (no toasting).","Set out the bread, fillings and a board.","Spread butter and chutney, layer vegetables, close and cut each sandwich.","Arrange on a platter and cover.","8 sandwiches with cucumber, tomato and chutney.","","E:Chopping board|1;E:Butter knife|1;E:Plates|4;E:Platter|1;I:Bread slices|16;I:Butter|50 g;I:Cucumber|1;I:Tomatoes|2;I:Green chutney|3 tbsp;I:Salt and pepper|1 pinch"],
+["SN6","Peanut Butter Banana Sandwich",15,"simple","A quick sweet snack is needed.","Set out the bread, peanut butter and bananas.","Spread peanut butter, add sliced banana, close and cut the sandwiches.","Plate and cover them.","4 sandwiches cut into triangles.","","E:Chopping board|1;E:Butter knife|1;E:Knife|1;E:Plates|4;I:Bread slices|8;I:Peanut butter|4 tbsp;I:Bananas|3"],
+["SN7","Bhel Puri Mix",15,"simple","A crunchy street-style snack is needed.","Set out the puffed rice, chutneys and a large bowl.","Chop the onion and tomato and toss everything together just before serving.","Portion into cones or bowls and wipe the work area.","Puffed rice with sev, onion, tomato and chutneys.","Mix just before serving so it stays crisp.","E:Large bowl|1;E:Chopping board|1;E:Knife|1;E:Spoons|4;E:Paper cones or small bowls|4;I:Puffed rice|4 cups;I:Sev|1 cup;I:Onion|1;I:Tomato|1;I:Boiled potato (ready)|1;I:Tamarind chutney|3 tbsp;I:Green chutney|3 tbsp;I:Chaat masala|1 tsp"],
+["SN8","Lemon Water Jug",15,"simple","A cool drink is needed for the team.","Set out the jug, glasses, lemons and sugar.","Squeeze the lemons, mix with sugar, salt and water, and stir well.","Add ice, fill the glasses and rinse the jug.","1.5 L of lemon water for 4 people.","","E:Jug|1;E:Glasses|4;E:Spoon|1;E:Lemon squeezer|1;E:Knife|1;I:Lemons|4;I:Sugar|4 tbsp;I:Salt|1 pinch;I:Water|1.5 L;I:Ice|1 bowl"],
+["SN9","Banana Milkshake",15,"simple","A cold shake is needed for the break.","Set out the blender, bananas, milk and glasses.","Peel and slice the bananas, blend with milk, sugar and ice, and pour.","Rinse the blender jar and wipe the counter.","4 glasses of banana milkshake.","","E:Blender or mixer|1;E:Glasses|4;E:Chopping board|1;E:Knife|1;E:Spoon|1;I:Bananas|4;I:Milk|2 cups;I:Sugar|2 tbsp;I:Ice|1 bowl"],
+["SN10","Curd Fruit Parfait",15,"simple","A layered cold snack is needed.","Set out the glasses, curd and chopped fruit.","Layer curd, fruit and muesli in each glass.","Chill and clear the counter.","4 parfait glasses with curd, fruit and muesli.","Chill 10 min before serving.","E:Glasses or cups|4;E:Spoons|4;E:Chopping board|1;E:Knife|1;I:Curd|2 cups;I:Honey or sugar|2 tbsp;I:Chopped fruit|2 cups;I:Muesli|1/2 cup"],
+["SN11","Trail Mix Jars",15,"portion","Packed snacks are needed for the break.","Set out the nuts, jars and a large bowl.","Mix nuts, raisins and seeds, then portion into jars.","Label and close the jars.","4 jars with almonds, cashews, raisins and seeds.","","E:Large bowl|1;E:Jars with lids|4;E:Spoon|1;E:Labels|4;E:Marker|1;I:Almonds|1 cup;I:Cashews|1 cup;I:Raisins|1 cup;I:Pumpkin seeds|1/2 cup"],
+["SN12","Veg Wrap Rolls",15,"simple","A filling wrap is needed using ready chapatis.","Set out the chapatis, vegetables and a board.","Cut the vegetables thin, spread the sauce, fill, roll and halve.","Wrap in paper and arrange on a tray.","6 wraps with cucumber, carrot, cabbage and a chutney spread.","","E:Chopping board|1;E:Knife|1;E:Tray|1;E:Butter paper or foil|6 sheets;I:Chapatis (ready)|6;I:Cucumber|1;I:Carrot|1;I:Cabbage|1 cup;I:Mayonnaise or chutney|4 tbsp;I:Salt|1 pinch"],
+["SN13","Fruit Chaat with Masala",15,"simple","A tangy fruit snack is needed.","Wash the fruit and set the board and bowl.","Cut the fruit, add the masala, lemon and black salt and toss.","Portion into bowls and wipe the work area.","Apple, banana and guava with chaat masala.","","E:Chopping board|1;E:Knife|1;E:Large bowl|1;E:Small bowls|4;E:Spoons|4;I:Apples|2;I:Bananas|2;I:Guava or pomegranate|1 cup;I:Chaat masala|1 tsp;I:Lemon|1;I:Black salt|1 pinch"],
+["SN14","Date & Coconut Balls",15,"grind","A no-cook sweet snack is needed.","Set out the dates, coconut and a bowl.","Mash the dates with nuts, shape small balls and roll in coconut.","Place on a tray and chill.","16 balls of dates and coconut.","Chill 15 min to firm up.","E:Bowl|1;E:Fork or masher|1;E:Plate|1;E:Tray|1;I:Dates (seedless)|20;I:Desiccated coconut|1 cup;I:Chopped nuts|1/2 cup;I:Ghee or oil|1 tsp"],
+["SN15","Boiled Egg Peeling & Salting",15,"peel","Boiled eggs, already cooked and cooled, are needed as a snack.","Bring the cooled eggs, bowls and a plate.","Crack and peel the eggs, rinse them and sprinkle with salt and pepper.","Plate the eggs and clear the shells.","8 eggs with salt and pepper.","Eggs must be fully cooled before peeling.","E:Bowls|2;E:Plate|1;E:Salt shaker|1;E:Tissues|1 pack;I:Boiled eggs (cooled, ready)|8;I:Salt|1 pinch;I:Pepper|1 pinch"],
+["SN16","Sweet Corn Chaat",15,"simple","A light corn snack is needed.","Set out the corn, vegetables and bowls.","Chop the onion and tomato, then mix with corn, lemon and masala.","Portion into cups and wipe the work area.","Sweet corn with onion, tomato and lemon.","","E:Large bowl|1;E:Chopping board|1;E:Knife|1;E:Cups|4;E:Spoons|4;I:Sweet corn (steamed or canned)|2 cups;I:Onion|1;I:Tomato|1;I:Lemon|1;I:Chaat masala|1 tsp;I:Coriander leaves|1 handful"],
+["SN17","Snack Platter Serving Setup",15,"serve","Several snacks are ready to be served together.","Bring the prepared snacks, trays and plates.","Arrange the snacks on trays, add napkins, spoons and toothpicks, and place the platters.","Leave the serving table neat.","A tray with two or three snack kinds.","","E:Large trays|2;E:Small plates|8;E:Napkins|1 pack;E:Serving tongs|2;E:Toothpicks|1 pack;I:Prepared snacks|2–3 kinds"],
+["SN18","Cucumber Mint Cooler",15,"simple","A refreshing drink is needed.","Set out the jug, glasses and the cucumbers.","Slice the cucumbers, add mint and lemon, then stir in the cold water and salt.","Fill glasses and rinse the jug.","1 L of cucumber mint cooler.","","E:Jug|1;E:Glasses|4;E:Chopping board|1;E:Knife|1;E:Spoon|1;I:Cucumbers|2;I:Mint leaves|1 handful;I:Lemon|1;I:Salt|1 pinch;I:Cold water|1 L"],
+["SN19","Orange Peeling & Segment Plate",15,"peel","An easy fruit plate is needed.","Bring oranges, a plate and a waste bowl.","Peel the oranges and separate the segments.","Arrange on a plate and clear the peels.","6 oranges in a neat segment plate.","","E:Plate|1;E:Bowl|1;E:Waste bowl|1;I:Oranges|6"]];
+const SNKW=["Om Prakash","Vasanth","Shreyas"];
+const fp=p=>{const g={E:[],I:[]};p.split(";").forEach(x=>{const m=x.match(/^([EI]):(.*)\|(.*)$/);if(m)g[m[1]].push(m[2]+" × "+m[3])});return `<b style="display:inline">Equipment:</b> ${g.E.join(", ")}<br><b style="display:inline">Ingredients:</b> ${g.I.join(", ")}`};
+const ARR={"sortdry": "Tray in the centre; one bowl per type in a row on the right; a waste bowl on the left; finished containers behind the tray.", "wash": "Basin on the left, colander in the centre, clean tray on the right near the tap. Dirty items go in on the left; clean ones end up on the right.", "cut": "Board in the centre with the knife on your working side; uncut vegetables on the left, one bowl per cut on the right, scrap bowl in front.", "simple": "Ingredients on the left, utensils in the centre, plates on the right; waste bowl in front.", "cook": "Prepped ingredients in small bowls on the left in cooking order, oil and spices within reach, pot on the stove, serving container on the right.", "knead": "Large bowl in the centre; atta, water and oil on the left; a cloth on the right to cover the dough.", "store": "Cooled food on the left, labelled containers in the centre, fridge or shelf on the right; heavy items at the bottom.", "peel": "Produce on the left, peeler and bowl in the centre, scrap bin on the right.", "serve": "Plates in a row, dishes in serving order on the left, a spoon beside each dish.", "clear": "Tray in front; stack plates first, then glasses and cutlery; leftovers into one bowl.", "portion": "Source pots on the left, empty containers in a row in the centre, lids on the right.", "cables": "Cables in rows by type (USB-C, micro-USB, Lightning, adapters); each coil tied and placed in a small tray.", "drawer": "Contents on the table in groups; wipe the drawer; everyday items at the front, small items in trays.", "box": "Empty onto a sheet and group like items; heavy items at the bottom, light on top, labels facing out.", "clutter": "A basket for items going to other rooms, a bin for trash; items returned to their homes in order.", "consol": "Matching items side by side; combine into one container; empty packaging in a bag.", "docs": "Piles in a row by type (bills, receipts, letters); a folder labelled for each pile; discards to the side.", "retrieve": "Take out only what you need and place it in order beside the shelf; return in reverse order.", "restock": "Supplies on a table; oldest stock in front, new stock behind; labels facing out.", "handwash": "Wash bucket on the left, rinse bucket in the centre, drying line or rack on the right; soap and brush within reach.", "fold": "Clean flat surface; fold one piece at a time; stack by type (T-shirts, trousers, towels) side by side.", "bed": "Fitted sheet first, then the top sheet; blanket folded at the foot, pillows at the head, cushions on top.", "sortlaundry": "Three piles on the floor: whites, colours and delicates; a separate pile for stained items.", "floor": "Move small items aside; sweep from corners to the centre, collect debris, then mop in sections toward the door.", "surface": "Move items onto a tray; wipe from back to front and top to bottom; dry; return items in order.", "tidyroom": "Work in a circle from the door: dishes to the sink, trash to the bin, items to their homes, then wipe surfaces.", "waste": "Labelled bins side by side (wet, dry, recyclables); sort from one pile over a sheet.", "dishes": "Scrape on the left, soapy water in the centre, rinse on the right, rack beside it; plates, then glasses, then cutlery, then pots.", "load": "Plates facing the centre in slots, glasses upside down on the top rack, cutlery handle-down in the basket.", "unload": "Empty the bottom rack first, then the top; stack by type and put each in its home.", "rearr": "Mark the target spots; move large pieces first, then small ones; leave a clear walkway.", "craft": "Materials in a tray on the left, work mat in the centre, finished items drying on the right; scissors and glue within reach.", "appl": "Switch off and unplug; dust first, then wipe with a damp cloth, then dry; work from top to bottom.", "tools": "Tools on a mat in order of use; return each to its hook or shelf after use.", "bin": "New liners ready; lift the full liner, tie it, wipe the bin, fit the new liner and fold its edge over the rim.", "iron": "Board near a socket; sorted pile on the left, hangers on the right; iron collars, then sleeves, then the body.", "sortorg": "Group by the given rule; everyday items at eye level and at the front, heavy items low.", "labelbox": "Boxes in a row; the label on the same front corner of every box, facing out.", "curt": "Pull the curtain straight; gather the folds evenly; tie both sides at the same height.", "dress": "Chicken on a separate board; marinade bowl beside it; wash hands and tools after touching; cover and refrigerate.", "grind": "Soaked ingredients on the left, grinder in the centre, receiving vessel on the right; add water slowly.", "skewer": "Marinated items on the left, skewers in the centre, finished skewers on a tray on the right; alternate items evenly."};
+const CC={"Organization & Storage":"#2563eb","Laundry & Textiles":"#7c3aed","Cleaning & Waste":"#0d9488","Food & Meal Tasks":"#ea580c","Dishwashing":"#0891b2","Setup & Arrangement":"#4f46e5","Crafts & Handiwork":"#db2777","Household Controls & Fixtures":"#65a30d"};
+const link=a=>a.forEach((t,i)=>{t.st=i+1;t.n=a.length;t.pv=a[i-1]?a[i-1][1]:"Start";t.nx=a[i+1]?a[i+1][1]:"End"});
+function card(t){const[c,g]=S[t[3]];const tm=TM[t[0]]||t[9];const ex=t[8]||X[t[0]]||"";
+return `<article class="card" style="--c:${CC[c]||"#2563eb"}"><div class="top"><span class="no">TASK ${t[0]}</span>${t.st?`<span class="step">Step ${t.st} of ${t.n}</span>`:""}<span class="badge">${t[2]} min</span></div>
+<h3>${t[1]}</h3><div class="tags"><span class="tag">${c}</span><span class="seg">${g}</span></div>
+${t.st?`<div class="flow"><span>◀ ${t.pv}</span><span>${t.nx} ▶</span></div>`:""}
+<div class="grid"><div class="f"><b>Realistic Situation</b>${t[4]}</div><div class="f"><b>Initial Stage</b>${t[5]}</div><div class="f arr"><b>How to Arrange</b>${ARR[t[3]]||""}</div><div class="f"><b>Task Movement</b>${t[6]}</div>${ex?`<div class="f"><b>Examples</b>${ex}</div>`:""}<div class="f"><b>Final Stage</b>${t[7]}</div>${tm?`<div class="f wide"><b>Timing</b>${tm}</div>`:""}${t[10]?`<div class="f wide"><b>Props Required</b>${fp(t[10])}</div>`:""}</div></article>`}
+function render(){
+$("tabs").innerHTML=W.map(w=>`<button class="${w==cur?'on':''}" data-w="${w}">${w=="Emergency"?"Emergency Task Bank":w}</button>`).join("");
+const key=cur,w=T[key],q=$("q").value.toLowerCase();
+if(cur=="Props List"){const eq={},ing={};SNK.forEach(t=>t[10].split(";").forEach(x=>{const m=x.match(/^([EI]):(.*)\|(.*)$/);if(!m)return;const o=m[1]=="E"?eq:ing;(o[m[2]]=o[m[2]]||{q:new Set(),t:[]}).q.add(m[3]);o[m[2]].t.push(t[0])}));
+const tb=o=>`<table><tr><th>Item</th><th>Quantity</th><th>Used in</th></tr>`+Object.keys(o).sort().map(n=>`<tr><td>${n}</td><td>${[...o[n].q].join(" / ")}</td><td>${o[n].t.join(", ")}</td></tr>`).join("")+`</table>`;
+$("sum").innerHTML=`<b>Props List — Snack Tasks</b><div class="row"><span>All equipment and ingredients for the ${SNK.length} snack tasks • quantities are for 4 people per snack</span></div>`;
+$("list").innerHTML=`<h2>Equipment</h2>${tb(eq)}<h2>Ingredients</h2>${tb(ing)}`;return}
+const f=a=>(a||[]).filter(t=>!q||(t[1]+S[t[3]].join(" ")+t[4]).toLowerCase().includes(q));
+let h="";
+if(cur=="Emergency"||cur=="Task Bank"){const bk=cur=="Task Bank";
+$("sum").innerHTML=bk?`<b>Task Bank</b><div class="row"><span>Extra tasks outside the 2-hour queues • Cooking tasks for Adarsh and Vivek only</span></div>`:`<b>Emergency Task Bank</b><div class="row"><span>Supervisor-assigned when a worker finishes early or a task is unavailable</span></div>`;
+const sec=(t,a)=>`<h2>${t}</h2>`+(a.length?a.map(card).join(""):'<div class="none">No matching tasks</div>');
+h=bk?sec("General Tasks",f(w.gen))+sec("Cooking Tasks — Adarsh & Vivek only",f(w.kit)):sec("Emergency Tasks",f(w.emg));
+}else{
+const b=w.base,tot=mins(b),dn=doneMin(b),p=tot?Math.round(dn/tot*100):0;
+$("sum").innerHTML=`<b>Worker: ${cur}</b> <span class="badge">Round 1</span> <span class="badge">Set: ${L[key]}</span>
+<div class="row"><span>${tot} min base queue</span></div>`+(w.ext?`<div class="row"><span>Extended queue: ${mins(w.ext)} min</span></div>`:"");
+const a=f(b),e=f(w.ext);link(b);if(w.ext)link(w.ext);$("sum").innerHTML+=`<div class="story">${w.story||""}</div><div class="chain">${b.map((t,i)=>`<span><i>${i+1}</i>${t[1]}</span>`).join("")}</div>`;
+h=`<h2>Base 2-Hour Queue</h2>`+(a.length?a.map(card).join(""):'<div class="none">No matching tasks</div>');
+if(w.ext)h+=`<h2>Extended Queue (separate from base)</h2>`+(e.length?e.map(card).join(""):'<div class="none">No matching tasks</div>');}
+if(cur!="Emergency"&&cur!="Task Bank"){
+const blk=(t,a)=>a.length?`<details ${q?"open":""}><summary>${t} (${a.length})</summary>${a.map(card).join("")}</details>`:"";
+if(w.alt){link(w.alt);h+=blk("Previous Round 1 Plan (not for today)",f(w.alt))}
+if(SNKW.includes(cur))h+=blk("Snack Tasks — no stove, 15 min each",f(SNK));
+if(COOK.includes(cur))h+=blk("More Cooking Tasks — Adarsh & Vivek only",f(T["Task Bank"].kit));
+h+=blk("Shared Tasks — All Workers",f(SH));}
+$("list").innerHTML=h;
+}
+$("tabs").onclick=e=>{const w=e.target.dataset.w;if(w){cur=w;render();scrollTo(0,0)}};
+$("q").oninput=render;
+render();
+</script></body></html>
